@@ -1,0 +1,76 @@
+<md-dialog aria-label="Create a new account" id="account-create">
+
+    <md-toolbar class="md-accent">
+        <h3 class="md-toolbar-tools">
+            Create a new account
+        </h3>
+    </md-toolbar>
+
+    <md-content>
+        <section class="section slim" layout="column">
+            <p>
+                Create a new account for your application.
+            </p>
+        </section>
+
+        <form name="createForm">
+
+            <section class="section slim" layout="column">
+				<span layout="row" layout-align="start center">
+					<span flex="33">Account is active</span>
+					<md-switch name="active" class="no-label" aria-label="account active" ng-model="create.account.active"></md-switch>
+				</span>
+            </section>
+
+            <section class="section" layout="column">
+
+				<span layout="row" layout-sm="column">
+					<md-input-container flex>
+                        <label>Name</label>
+                        <input name="name" ng-model="create.account.name"
+                               ng-model-options="{updateOn: 'default blur', debounce: {'default': 500, 'blur': 0}}"
+                               required mongoose-error remote-unique="Account">
+                        <div ng-messages="createForm.name.$error">
+                            <div ng-message="required">Name is required</div>
+                            <div ng-message="mongoose">Name already in use</div>
+                            <div ng-message="remote-unique">Name already in use</div>
+                        </div>
+                    </md-input-container>
+				</span>
+
+				<span layout="row" layout-sm="column">
+					<md-input-container flex class="last">
+                        <label>Info</label>
+                        <textarea name="info" ng-model="create.account.info"></textarea>
+                    </md-input-container>
+				</span>
+				
+				</span>
+				
+				</span></span></span>
+				
+				
+				
+
+				<span layout="row" layout-sm="column">
+					<md-input-container flex class="last">
+                        <label>Info</label>
+                        <textarea name="info" ng-model="create.account.info"></textarea>
+                    </md-input-container>
+				</span>
+
+				
+				
+            </section>
+
+        </form>
+
+    </md-content>
+
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="create.close()" aria-label="Cancel">Cancel</md-button>
+        <md-button ng-disabled="createForm.$invalid"  aria-label="Create Account" ng-click="create.create(createForm)" class="md-primary md-raised">Create account</md-button>
+    </div>
+
+</md-dialog>
