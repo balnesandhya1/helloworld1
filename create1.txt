@@ -1,0 +1,48 @@
+<md-dialog aria-label="Create a new compliance" id="compliance-create-content">
+
+    <md-toolbar class="md-accent">
+        <h3 class="md-toolbar-tools">
+            Create a new compliance
+        </h3>
+    </md-toolbar>
+
+    <md-content>
+        <form name="createForm">
+
+            <section class="section" layout="column">
+
+				<span layout="row" layout-sm="column">
+					<md-input-container flex>
+                        <label>Applied To</label>
+                        <md-select name="label" ng-model="create.compliance.label" required>
+                            <md-option ng-repeat="label in create.labels" value="{{label.value}}">{{label.name}}</md-option>
+                        </md-select>
+                        <div ng-messages="createForm.name.$error">
+                            <div ng-message="required">Select the compliance applied to.</div>
+                        </div>
+                    </md-input-container>
+				</span>
+
+				
+				
+				
+				
+				  </div>
+                    </md-input-container>
+				</span>
+				
+				
+				
+            </section>
+
+        </form>
+
+    </md-content>
+
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="create.close()" aria-label="cancel">Cancel</md-button>
+        <md-button ng-disabled="createForm.$invalid" ng-click="create.create(createForm)" class="md-primary md-raised" aria-label="create compliance">Create compliance</md-button>
+    </div>
+
+</md-dialog>
